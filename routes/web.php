@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HelloController;
 use App\Http\Controllers\PerkalianController;
+use App\Http\Controllers\CarsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,5 +27,10 @@ use App\Http\Controllers\PerkalianController;
 // Route::get('/hello', [HelloController::class, 'index']);
 // Route::get('/perkalian/{perkalian}', [PerkalianController::class, 'index']);
 
-Route::get('/perkalian', [PerkalianController::class, 'create'])->name('perkalian.form');
-Route::get('/perkalian/hasil', [PerkalianController::class, 'store'])->name('perkalian.store');
+// validasi
+// Route::get('/perkalian', [PerkalianController::class, 'create'])->name('perkalian.form');
+// Route::get('/perkalian/hasil', [PerkalianController::class, 'store'])->name('perkalian.store');
+
+// Cars Task Query Builder
+Route::get('/cars', [CarsController::class, 'index'])->name('cars.index');
+Route::post('/cars', [CarsController::class, 'store'])->name('cars.store');
