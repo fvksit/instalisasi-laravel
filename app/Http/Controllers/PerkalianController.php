@@ -31,26 +31,24 @@ class PerkalianController extends Controller
     {
 
         // Request Respon
+        // $angka1 = $request->query('angka1');
+        // $angka2 = $request->query('angka2');
 
-        $angka1 = $request->query('angka1');
-        $angka2 = $request->query('angka2');
-
-        if (!is_numeric($angka1) || !is_numeric($angka2)) {
-            return back()->withErrors(['message' => 'Angka tidak valid']);
-        }
-
-        $hasil = $angka1 * $angka2;
-
-        return view('hasil', compact('angka1', 'angka2', 'hasil'));
-
-        // $validator = $request->validate([
-        //     'angka1' => 'required|numeric',
-        //     'angka2' => 'required|numeric',
-        // ]);
-        // $angka1 = $validator['angka1'];
-        // $angka2 = $validator['angka2'];
+        // if (!is_numeric($angka1) || !is_numeric($angka2)) {
+        //     return back()->withErrors(['message' => 'Angka tidak valid']);
+        // }
         // $hasil = $angka1 * $angka2;
         // return view('hasil', compact('angka1', 'angka2', 'hasil'));
+
+        // Validasi
+        $validator = $request->validate([
+            'angka1' => 'required|numeric',
+            'angka2' => 'required|numeric',
+        ]);
+        $angka1 = $validator['angka1'];
+        $angka2 = $validator['angka2'];
+        $hasil = $angka1 * $angka2;
+        return view('hasil', compact('angka1', 'angka2', 'hasil'));
     }
 
     /**
