@@ -25,9 +25,11 @@ class CarsController extends Controller
         // return view('/cars', compact('carsQueryBuilder'));
 
         // Task Eloquent
-        $carsEloquent = Cars::with('manufacture', 'reviews', 'features')->whereYear('tanggal_pembuatan', 1991)
+        $carsEloquent = Cars::with('manufacture', 'reviews', 'features') // eager load manufacture, reviews, dan features
+            ->whereYear('tanggal_pembuatan', 2021)
             ->orderBy('tanggal_pembuatan', 'desc')
             ->get();
+
         return view('/cars', compact('carsEloquent'));
     }
 

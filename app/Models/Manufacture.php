@@ -11,14 +11,10 @@ class Manufacture extends Model
 
     // Task Eloquent Relationships: One To One
     protected $table = 'manufactures';
-
-    protected $fillable = [
-        'nama',
-        'alamat',
-    ];
+    protected $fillable = ['nama', 'alamat'];
 
     public function cars()
     {
-        return $this->hasOne(Cars::class);
+        return $this->hasOne(Cars::class, 'manufactures_id');
     }
 }

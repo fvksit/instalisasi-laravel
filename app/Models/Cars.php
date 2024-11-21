@@ -17,15 +17,15 @@ class Cars extends Model
         $this->attributes['tanggal_pembuatan'] = $value . '-01';
     }
 
-    public function getTanggalPembuatanAttribute()
+    public function getTanggalPembuatanAttribute($value)
     {
-        return $this->tanggal_pembuatan ? date('Y', strtotime($this->tanggal_pembuatan)) : null;
+        return $value ? date('Y', strtotime($value)) : null;
     }
 
     // Task Eloquent Relationships: One To One
-    public function manufactures()
+    public function manufacture()
     {
-        return $this->belongsTo(Manufacture::class);
+        return $this->belongsTo(Manufacture::class, 'manufactures_id');
     }
 
     // Eloquent Relationships: One To Many
@@ -38,6 +38,6 @@ class Cars extends Model
     // Eloquent Relationships: Many To Many
     public function features()
     {
-        return $this->belongsToMany(Feature::class, 'car_feature');
+        return $this->belongsToMany(Feature::class, 'cars_features', 'cars_id', 'features_id');
     }
 }

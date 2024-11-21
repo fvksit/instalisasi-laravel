@@ -41,37 +41,37 @@
     </thead>
     <tbody>
         @foreach ($carsEloquent as $car)
-            <tr>
-                <td>{{ $car->nama }}</td>
-                <td>{{ $car->jenis }}</td>
-                <td>{{ number_format($car->harga, 0, ',', '.') }}</td>
-                <td>{{ $car->tanggal_pembuatan }}</td>
-                <td>{{ $car->manufacture->nama ?? 'Tidak Ada Manufaktur' }}</td>
-                <td>{{ $car->manufacture->alamat ?? 'Tidak Ada Alamat' }}</td>
-                {{-- Menampilkan Review --}}
-            <td>
-                @if($car->reviews->isEmpty())
-                    <p>Tidak ada review</p>
-                @else
-                    @foreach ($car->reviews as $review)
-                        <p><strong>{{ $review->nama }}</strong> (Rating: {{ $review->nilai }}): {{ $review->isi }}</p>
-                    @endforeach
-                @endif
-            </td>
-            {{-- Menampilkan Fitur --}}
-            <td>
-                @if($car->features->isEmpty())
-                    <p>Tidak ada fitur</p>
-                @else
-                    <ul>
-                        @foreach ($car->features as $feature)
-                            <li>{{ $feature->nama }}</li>
-                        @endforeach
-                    </ul>
-                @endif
-            </td>
-            </tr>
-        @endforeach
+    <tr>
+        <td>{{ $car->nama }}</td>
+        <td>{{ $car->jenis }}</td>
+        <td>{{ number_format($car->harga, 0, ',', '.') }}</td>
+        <td>{{ $car->tanggal_pembuatan }}</td>
+        <td>
+            @if($car->manufacture)
+                {{ $car->manufacture->nama }}
+            @else
+                Tidak Ada Manufaktur
+            @endif
+        </td>
+        <td>
+            @if($car->manufacture)
+                {{ $car->manufacture->alamat }}
+            @else
+                Tidak Ada Alamat
+            @endif
+        </td>
+        <td>
+            @foreach ($car->reviews as $review)
+                <p><strong>{{ $review->nama }}</strong> (Rating: {{ $review->nilai }}): {{ $review->isi }}</p>
+            @endforeach
+        </td>
+        <td>
+            @foreach ($car->features as $feature)
+                <p>{{ $feature->name }}</p>
+            @endforeach
+        </td>
+    </tr>
+@endforeach
     </tbody>
 </table>
 </table>
