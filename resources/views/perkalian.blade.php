@@ -1,5 +1,5 @@
-
-{{-- <!DOCTYPE html>
+{{-- View --}}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -27,4 +27,4 @@
         <button type="submit">Hitung</button>
     </form>
 </body>
-</html> --}}
+</html>
