@@ -13,7 +13,7 @@ class PerkalianController extends Controller
     public function index($perkalian)
     {
         //controllers
-        return $perkalian * 2;
+        // return $perkalian * 2;
     }
 
     /**
@@ -21,7 +21,7 @@ class PerkalianController extends Controller
      */
     public function create()
     {
-        // return view('perkalian');
+        return view('perkalian');
     }
 
     /**
@@ -29,6 +29,20 @@ class PerkalianController extends Controller
      */
     public function store(Request $request)
     {
+
+        // Request Respon
+
+        $angka1 = $request->query('angka1');
+        $angka2 = $request->query('angka2');
+
+        if (!is_numeric($angka1) || !is_numeric($angka2)) {
+            return back()->withErrors(['message' => 'Angka tidak valid']);
+        }
+
+        $hasil = $angka1 * $angka2;
+
+        return view('hasil', compact('angka1', 'angka2', 'hasil'));
+
         // $validator = $request->validate([
         //     'angka1' => 'required|numeric',
         //     'angka2' => 'required|numeric',

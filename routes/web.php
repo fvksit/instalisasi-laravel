@@ -23,8 +23,8 @@ use App\Http\Controllers\PerkalianController;
 // });
 
 // controller
-Route::get('/hello', [HelloController::class, 'index']);
-Route::get('/perkalian/{perkalian}', [PerkalianController::class, 'index']);
+// Route::get('/hello', [HelloController::class, 'index']);
+// Route::get('/perkalian/{perkalian}', [PerkalianController::class, 'index']);
 
-// Route::get('/perkalian', [PerkalianController::class, 'create'])->name('perkalian.form');
-// Route::get('/perkalian/hasil', [PerkalianController::class, 'store'])->name('perkalian.store');
+Route::get('/perkalian', [PerkalianController::class, 'create'])->name('perkalian.form');
+Route::get('/perkalian/hasil', [PerkalianController::class, 'store'])->name('perkalian.store');
