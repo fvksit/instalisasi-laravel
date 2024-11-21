@@ -14,15 +14,13 @@ use App\Http\Controllers\PerkalianController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-
-Route::get('/hello', function () {
-    return 'Hello World!';
-});
-
-
-Route::get('perkalian/{angka}', function ($angka) {
-    return 'Angka ' . $angka * 2;
-});
+//Routing
+// Route::get('/hello', function () {
+//     return 'Hello World!';
+// });
+// Route::get('perkalian/{angka}', function ($angka) {
+//     return 'Angka ' . $angka * 2;
+// });
 
 // Route::get('/hello', [HelloController::class, 'index']);
 // Route::get('/perkalian/{perkalian}', [PerkalianController::class, 'index']);
