@@ -25,7 +25,7 @@ class CarsController extends Controller
         // return view('/cars', compact('carsQueryBuilder'));
 
         // Task Eloquent
-        $carsEloquent = Cars::whereYear('tanggal_pembuatan', 1991)
+        $carsEloquent = Cars::with('manufacture', 'reviews')->whereYear('tanggal_pembuatan', 1991)
             ->orderBy('tanggal_pembuatan', 'desc')
             ->get();
         return view('/cars', compact('carsEloquent'));
@@ -45,12 +45,12 @@ class CarsController extends Controller
     public function store(Request $request)
     {
 
-        $validated = $request->validate([
-            'name' => 'required|string|max:255',
-            'jenis' => 'required|string|max:255',
-            'harga' => 'required|numeric',
-            'tanggal_pembuatan' => 'required|date',
-        ]);
+        // $validated = $request->validate([
+        //     'name' => 'required|string|max:255',
+        //     'jenis' => 'required|string|max:255',
+        //     'harga' => 'required|numeric',
+        //     'tanggal_pembuatan' => 'required|date',
+        // ]);
 
         //Task Query Builder
         // DB::table('cars')->insert([
@@ -62,9 +62,9 @@ class CarsController extends Controller
         // ]);
 
         // Task Eloquent
-        Cars::create($validated);
+        // Cars::create($validated);
 
-        return redirect()->route('cars.index')->with('success', 'Data berhasil disimpan');
+        // return redirect()->route('cars.index')->with('success', 'Data berhasil disimpan');
     }
 
     /**

@@ -11,12 +11,14 @@ class Cars extends Model
 
     protected $table = 'cars';
     protected $fillable = ['nama', 'jenis', 'harga', 'tanggal_pembuatan', 'manufactures_id'];
-    
-    public function setTanggalPembuatanAttribute($value){
+
+    public function setTanggalPembuatanAttribute($value)
+    {
         $this->attributes['tanggal_pembuatan'] = $value . '-01';
     }
 
-    public function getTanggalPembuatanAttribute(){
+    public function getTanggalPembuatanAttribute()
+    {
         return $this->tanggal_pembuatan ? date('Y', strtotime($this->tanggal_pembuatan)) : null;
     }
 
@@ -24,5 +26,11 @@ class Cars extends Model
     public function manufactures()
     {
         return $this->belongsTo(Manufacture::class);
+    }
+    
+    // Eloquent Relationships: One To Many
+    public function reviews()
+    {
+        return $this->hasMany(Review::class);
     }
 }

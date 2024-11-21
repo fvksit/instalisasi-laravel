@@ -29,10 +29,13 @@
     <table border="1">
     <thead>
         <tr>
-            <th>Name</th>
-            <th>Type</th>
-            <th>Price</th>
+            <th>Nama</th>
+            <th>Jenis</th>
+            <th>Harga</th>
             <th>Tanggal Pembuatan</th>
+            <th>Nama Manufaktur</th>
+            <th>Alamat</th>
+            <th>Reviews</th>
         </tr>
     </thead>
     <tbody>
@@ -44,6 +47,11 @@
                 <td>{{ $car->tanggal_pembuatan }}</td>
                 <td>{{ $car->manufacture->nama ?? 'Tidak Ada Manufaktur' }}</td>
                 <td>{{ $car->manufacture->alamat ?? 'Tidak Ada Alamat' }}</td>
+                <td>
+                    @foreach ($car->reviews as $review)
+                        <p><strong>{{ $review->nama }}</strong> (Rating: {{ $review->nilai }}): {{ $review->isi }}</p>
+                    @endforeach
+                </td>
             </tr>
         @endforeach
     </tbody>
