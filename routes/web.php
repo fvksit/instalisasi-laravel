@@ -14,7 +14,7 @@ use App\Http\Controllers\PerkalianController;
 | be assigned to the "web" middleware group. Make something great!
 |
 */
-//Routing
+// Routing
 // Route::get('/hello', function () {
 //     return 'Hello World!';
 // });
@@ -22,8 +22,9 @@ use App\Http\Controllers\PerkalianController;
 //     return 'Angka ' . $angka * 2;
 // });
 
-// Route::get('/hello', [HelloController::class, 'index']);
-// Route::get('/perkalian/{perkalian}', [PerkalianController::class, 'index']);
+// controller
+Route::get('/hello', [HelloController::class, 'index']);
+Route::get('/perkalian/{perkalian}', [PerkalianController::class, 'index']);
 
 // Route::get('/perkalian', [PerkalianController::class, 'create'])->name('perkalian.form');
 // Route::get('/perkalian/hasil', [PerkalianController::class, 'store'])->name('perkalian.store');

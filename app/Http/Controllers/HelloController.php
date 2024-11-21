@@ -12,7 +12,8 @@ class HelloController extends Controller
      */
     public function index()
     {
-        // return 'Hello World';
+        //Controllers
+        return 'Hello World';
     }
 
     /**

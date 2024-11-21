@@ -12,7 +12,8 @@ class PerkalianController extends Controller
      */
     public function index($perkalian)
     {
-        // return $perkalian * 2;
+        //controllers
+        return $perkalian * 2;
     }
 
     /**
@@ -38,7 +39,7 @@ class PerkalianController extends Controller
         // return view('hasil', compact('angka1', 'angka2', 'hasil'));
     }
 
-    /**     
+    /**
      * Display the specified resource.
      */
     public function show(perkalian $perkalian)
