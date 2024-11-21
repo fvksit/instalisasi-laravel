@@ -11,10 +11,7 @@ class Cars extends Model
 
     protected $table = 'cars';
     protected $fillable = ['nama', 'jenis', 'harga', 'tanggal_pembuatan'];
-
-    public function scopeLatestTanggalPembuatan($query){
-        return $query->orderBy('tanggal_pembuatan', 'desc');
-    }
+    
     public function setTanggalPembuatanAttribute($value){
         $this->attributes['tanggal_pembuatan'] = $value . '-01';
     }
