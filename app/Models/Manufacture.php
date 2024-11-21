@@ -8,17 +8,17 @@ use Illuminate\Database\Eloquent\Model;
 class Manufacture extends Model
 {
     use HasFactory;
-    
+
+    // Task Eloquent Relationships: One To One
     protected $table = 'manufactures';
 
     protected $fillable = [
-        'cars_id',
         'nama',
         'alamat',
     ];
 
     public function cars()
     {
-        return $this->belongsTo(Cars::class, 'cars_id');
-    } 
+        return $this->hasOne(Cars::class);
+    }
 }

@@ -9,12 +9,12 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
+    
+    // Task Eloquent Relationships: One To One
     public function up(): void
     {
         Schema::create('manufactures', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('cars_id')->unique();
-            $table->foreign('cars_id')->references('id')->onDelete('cars');
             $table->string('nama');
             $table->string('alamat');
             $table->timestamps();

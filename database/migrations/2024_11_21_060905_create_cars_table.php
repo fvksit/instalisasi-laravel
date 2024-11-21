@@ -18,6 +18,8 @@ return new class extends Migration
             $table->string('jenis');
             $table->decimal('harga', 15, 1);
             $table->date('tanggal_pembuatan');
+            $table->unsignedBigInteger('manufactures_id')->nullable();
+            $table->foreign('manufactures_id')->references('id')->on('manufactures')->onDelete('cascade');
             $table->timestamps();
         });
     }

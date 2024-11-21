@@ -14,11 +14,15 @@ class CarsController extends Controller
     public function index()
     {
         // Task Query Builder
-        $carsQueryBuilder = DB::table('cars')
-            ->whereYear('tanggal_pembuatan', 1991)
-            ->orderBy('tanggal_pembuatan', 'desc')
-            ->get();
-        return view('/cars', compact('carsQueryBuilder'));
+        // $carsQueryBuilder = DB::table('cars')
+        //     ->whereYear('tanggal_pembuatan', 1991)
+        //     ->orderBy('tanggal_pembuatan', 'desc')
+        //     ->get();
+        // $carsQueryBuilder = $carsQueryBuilder->map(function ($car) {
+        //     $car->tanggal_pembuatan = $car->tanggal_pembuatan ? date('Y', strtotime($car->tanggal_pembuatan)) : null;
+        //     return $car;
+        // });
+        // return view('/cars', compact('carsQueryBuilder'));
 
         // Task Eloquent
         $carsEloquent = Cars::whereYear('tanggal_pembuatan', 1991)
@@ -49,13 +53,13 @@ class CarsController extends Controller
         ]);
 
         //Task Query Builder
-        DB::table('cars')->insert([
-            'name' => $validated['name'],
-            'jenis' => $validated['jenis'],
-            'harga' => $validated['harga'],
-            'tanggal_pembuatan' => $validated['tanggal_pembuatan'],
-            'created_at' => now(),
-        ]);
+        // DB::table('cars')->insert([
+        //     'name' => $validated['name'],
+        //     'jenis' => $validated['jenis'],
+        //     'harga' => $validated['harga'],
+        //     'tanggal_pembuatan' => $validated['tanggal_pembuatan'],
+        //     'created_at' => now(),
+        // ]);
 
         // Task Eloquent
         Cars::create($validated);

@@ -10,18 +10,19 @@ class Cars extends Model
     use HasFactory;
 
     protected $table = 'cars';
-    protected $fillable = ['nama', 'jenis', 'harga', 'tanggal_pembuatan'];
+    protected $fillable = ['nama', 'jenis', 'harga', 'tanggal_pembuatan', 'manufactures_id'];
     
     public function setTanggalPembuatanAttribute($value){
         $this->attributes['tanggal_pembuatan'] = $value . '-01';
     }
 
     public function getTanggalPembuatanAttribute(){
-        return $this->tanggal_pembuatan ? date('y-m', strtotime($this->tanggal_pembuatan)) : null;
+        return $this->tanggal_pembuatan ? date('Y', strtotime($this->tanggal_pembuatan)) : null;
     }
 
+    // Task Eloquent Relationships: One To One
     public function manufactures()
     {
-        return $this->hasMany(Manufacture::class, 'cars_id');
+        return $this->belongsTo(Manufacture::class);
     }
 }

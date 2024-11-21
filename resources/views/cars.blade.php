@@ -36,12 +36,14 @@
         </tr>
     </thead>
     <tbody>
-        @foreach ($cars as $car)
+        @foreach ($carsEloquent as $car)
             <tr>
                 <td>{{ $car->nama }}</td>
                 <td>{{ $car->jenis }}</td>
                 <td>{{ number_format($car->harga, 0, ',', '.') }}</td>
                 <td>{{ $car->tanggal_pembuatan }}</td>
+                <td>{{ $car->manufacture->nama ?? 'Tidak Ada Manufaktur' }}</td>
+                <td>{{ $car->manufacture->alamat ?? 'Tidak Ada Alamat' }}</td>
             </tr>
         @endforeach
     </tbody>
