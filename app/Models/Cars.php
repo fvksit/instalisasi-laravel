@@ -27,10 +27,17 @@ class Cars extends Model
     {
         return $this->belongsTo(Manufacture::class);
     }
-    
+
     // Eloquent Relationships: One To Many
     public function reviews()
     {
         return $this->hasMany(Review::class);
+    }
+
+
+    // Eloquent Relationships: Many To Many
+    public function features()
+    {
+        return $this->belongsToMany(Feature::class, 'car_feature');
     }
 }

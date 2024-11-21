@@ -36,6 +36,7 @@
             <th>Nama Manufaktur</th>
             <th>Alamat</th>
             <th>Reviews</th>
+            <th>Fitur</th>
         </tr>
     </thead>
     <tbody>
@@ -47,12 +48,28 @@
                 <td>{{ $car->tanggal_pembuatan }}</td>
                 <td>{{ $car->manufacture->nama ?? 'Tidak Ada Manufaktur' }}</td>
                 <td>{{ $car->manufacture->alamat ?? 'Tidak Ada Alamat' }}</td>
-                {{-- Eloquent Relationships: One To Many --}}
-                <td>
+                {{-- Menampilkan Review --}}
+            <td>
+                @if($car->reviews->isEmpty())
+                    <p>Tidak ada review</p>
+                @else
                     @foreach ($car->reviews as $review)
                         <p><strong>{{ $review->nama }}</strong> (Rating: {{ $review->nilai }}): {{ $review->isi }}</p>
                     @endforeach
-                </td>
+                @endif
+            </td>
+            {{-- Menampilkan Fitur --}}
+            <td>
+                @if($car->features->isEmpty())
+                    <p>Tidak ada fitur</p>
+                @else
+                    <ul>
+                        @foreach ($car->features as $feature)
+                            <li>{{ $feature->nama }}</li>
+                        @endforeach
+                    </ul>
+                @endif
+            </td>
             </tr>
         @endforeach
     </tbody>
