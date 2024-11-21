@@ -47,6 +47,7 @@
                 <td>{{ $car->tanggal_pembuatan }}</td>
                 <td>{{ $car->manufacture->nama ?? 'Tidak Ada Manufaktur' }}</td>
                 <td>{{ $car->manufacture->alamat ?? 'Tidak Ada Alamat' }}</td>
+                {{-- Eloquent Relationships: One To Many --}}
                 <td>
                     @foreach ($car->reviews as $review)
                         <p><strong>{{ $review->nama }}</strong> (Rating: {{ $review->nilai }}): {{ $review->isi }}</p>
